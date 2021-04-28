@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+        <script src="other.js"></script>
+        <style>
+                * {
+                    margin:0;
+                    padding:0;
+                    box-sizing: border-box;
+                }
+                .wrapper {
+                        display: flex;
+                        max-width:768px;
+                        margin: 1rem auto;
+                        box-shadow: 0px 0px 22px 8px rgba(0,0,0,0.05);
+                        padding: 1rem;
+                        border-radius: .5rem;
+                }
+                .block {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+                        /* padding: 1rem; */
+                }
+                .button {
+                        background: rgba(0,0,0,0.05);
+                        width:100%;
+                        border-radius: .5rem;
+                        padding: .8rem;
+                        box-shadow: 0px 0px 6px 1px rgba(0,0,0,.15);
+                        cursor: pointer;
+                        transition: 250ms;
+                        transform: scale(1);
+                        color:black;
+                        font-weight: 400;
+                        width:5rem;
+                        text-align: center;
+                }
+                .button:hover {
+                        color:rgb(35, 53, 212);
+                        box-shadow: 0px 0px 0px 3px rgb(0,0,0,0.13);
+
+                }
+        </style>
+        <div class="wrapper">
+                <div class="block">
+                        <div class="button" role="button">
+                                <span class="button-text">Click</span>
+                        </div>
+                </div>
+        </div>
+</html>

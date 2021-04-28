@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var apple = 10
+
+    function total() {
+        let a
+        if (true) {
+            a = 10
+        }
+        console.log(a)
+        let i=0
+        var price = 2
+        return apple * price
+    }
+
+    var appleTotal = total()
+
+    console.log(appleTotal)
+
+    function a(amount) {
+        var fruitName = 'apple'
+        let price = 20
+        if (amount) {
+            price *= amount
+        }
+        console.log(`Price of ${amount ?? 'one'} ${amount ? fruitName + 's' : fruitName} is ${price}`)
+    }
+    a(2)
+</script>
+</body>
+</html>

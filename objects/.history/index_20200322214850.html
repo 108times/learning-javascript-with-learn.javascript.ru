@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function User(name) {
+    //     this.name = name;
+    //     this.isAdmin = false;
+    // }
+    // let user = new User("Amir");
+
+    // function testUser(name) {
+    //     this.name = name;
+    //     return {name : 10};
+    // }
+    // let test = new testUser('Jhonathatn');
+
+    // function User(name)
+    // {
+    //     this.name = name;
+
+    //     this.sayHi = function() {
+    //         alert("Меня зовут " + this.name);
+    //     }
+    // }
+
+    // let user  =  new User('Amir').sayHi();
+
+
+/* TASKS  */
+//////  1  //////
+let obj = {};
+function A() {
+    return obj;
+}
+function B(){
+    return obj;
+}
+
+let a = new A();
+let b = new B(a);
+
+alert(a.true == b.true);
+
+////////////////
+
+
+/////  2  //////
+
+function Calculator() {
+    this.read = function () {
+        this.a = prompt('Введите 1 число','10');
+        this.b = prompt('Введите 2 число','10');
+    }
+    this.sum = function () {
+        return +this.a + +this.b
+    }
+    this.mul = function () {
+        return this.a * this.b;
+    }
+}
+
+let c = new Calculator();
+c.read();
+alert( "Sum=" + c.sum() );
+alert( "Mul=" + c.mul() );
+
+////////////////////////////
+
+
+
+//////////   3   //////////
+
+function Accumulator(startingValue)
+{
+    this.value = startingValue;
+    this.read = function () {
+        return this.value = this.value + +prompt('Введите число для прибавления');
+    }
+}
+let acc = new Accumulator(100);
+acc.read();
+acc.read();
+
+alert(acc.value);
+////////////////////////////
+
+</script>
+<!-- <script src="main.js"></script> -->
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function User(name) {
+    //     this.name = name;
+    //     this.isAdmin = false;
+    // }
+    // let user = new User("Amir");
+
+    // function testUser(name) {
+    //     this.name = name;
+    //     return {name : 10};
+    // }
+    // let test = new testUser('Jhonathatn');
+
+    function User(name)
+    {
+        this.name = name;
+
+        this.sayHi = function() {
+            alert("Меня зовут " + this.name);
+        }
+    }
+
+    alert( new User('Amir').name.sayHi())
+
+</script>
+<!-- <script src="main.js"></script> -->
+</html>

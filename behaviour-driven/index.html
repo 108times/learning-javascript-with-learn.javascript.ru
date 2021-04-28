@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="body">
+    <header class="header"></header>
+    <main class="main">
+    <div class="main_block">
+    <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit dignissimos placeat labore. Perferendis, delectus? Quos veritatis hic corporis obcaecati 
+        accusantium, iure impedit reprehenderit eaque, repellat asperiores maiores dolores.
+    </p>
+    </div>
+    </main>
+    <footer></footer>
+</body>
+<script>
+            
+            
+            function getCurrentDateAndTime(currentdate) {
+	//   var currentdate = new Date(); 
+	  let my_month = currentdate.getMonth()+1;
+	   my_month =  ('0'+ my_month).slice(-2);
+	  let my_date = ('0'+currentdate.getDate()).slice(-2);
+	  let my_hours = ('0'+currentdate.getHours()).slice(-2);
+	  let my_minutes = ('0'+currentdate.getMinutes()).slice(-2);
+	  let my_seconds = ('0'+currentdate.getSeconds()).slice(-2);
+	  let datetime = currentdate.getFullYear() + ""
+				  + my_month + "" 
+				  + my_date + ""  
+				  + my_hours + ""  
+				  + my_minutes + "" 
+				  + my_seconds;
+	  return datetime;
+	}
+				
+function getAdjustedDateAndTime(){
+    var mS = {'1':'Jan', '2':'Feb', '3':'Mar', '4':'Apr', 
+    '5':'May','6':'June', '7':'July', '8':'Aug', '9':'Sept', '10':'Oct', '11':'Nov', '12':'Dec'};
+
+    let currentdate = new Date();
+    let my_month = currentdate.getMonth()+1;
+    let my_date = currentdate.getDate();
+    let my_year = currentdate.getFullYear();
+      let my_hours = currentdate.getHours();
+      let my_minutes = currentdate.getMinutes();
+      let my_seconds = currentdate.getSeconds();
+    let my_full_date = `${mS[my_month]} ${my_date} ${my_year} ${my_hours}:${my_minutes}:${my_seconds}`;
+
+
+    let offset = new Date().getTimezoneOffset();
+    let utc_offset = Number(offset)/60;
+    let sign = utc_offset < 0 ? "-" : "+"; 
+    let abs_utc_offset = utc_offset; 
+    if (abs_utc_offset < 0) {
+        abs_utc_offset *= -1 ;
+    } 
+    let new_utc_offset = abs_utc_offset < 10 ? "0" : "";
+    let substr = " GMT" + sign + new_utc_offset + abs_utc_offset +"00"
+	my_full_date += substr;
+	let final = new Date(my_full_date);
+    return getCurrentDateAndTime(final);
+}
+function getNeededTime() {
+	var mS = {'1':'Jan', '2':'Feb', '3':'Mar', '4':'Apr', 
+    '5':'May','6':'June', '7':'July', '8':'Aug', '9':'Sept', '10':'Oct', '11':'Nov', '12':'Dec'};
+
+    let currentdate = new Date();
+    let my_month = currentdate.getMonth()+1;
+    let my_date = currentdate.getDate();
+    let my_year = currentdate.getFullYear();
+      let my_hours = currentdate.getHours();
+      let my_minutes = currentdate.getMinutes();
+      let my_seconds = currentdate.getSeconds();
+	let my_full_date = `${mS[my_month]} ${my_date} ${my_year} ${my_hours}:${my_minutes}:${my_seconds}`;
+	
+    let substr = " GMT-0-600";
+
+    let final_date = my_full_date + substr; 
+    console.log(final_date);
+    currentdate2 = new Date(final_date);
+    console.log(currentdate2);  
+
+    let d_time = currentdate2.getTime() + (currentdate2.getTimezoneOffset()*60);
+
+    let final = new Date(d_time + (3600000 * -6));
+
+    return getCurrentDateAndTime(final);
+}
+
+console.log(getNeededTime());
+
+//                 function getAdjustedDateAndTime(){
+//     var mS = {'1':'Jan', '2':'Feb', '3':'Mar', '4':'Apr', 
+//     '5':'May','6':'June', '7':'July', '8':'Aug', '9':'Sept', '10':'Oct', '11':'Nov', '12':'Dec'};
+
+//     let currentdate = new Date();
+//     let my_month = currentdate.getMonth()+1;
+//     let my_date = currentdate.getDate();
+//     let my_year = currentdate.getFullYear();
+//       let my_hours = currentdate.getHours();
+//       let my_minutes = currentdate.getMinutes();
+//       let my_seconds = currentdate.getSeconds();
+//     let my_full_date = `${mS[my_month]} ${my_date} ${my_year} ${my_hours}:${my_minutes}:${my_seconds}`;
+
+
+// 	// let utc = currentdate.getTime() + (currentdate.getTimezoneOffset() * 60000);
+
+//     let offset = new Date().getTimezoneOffset();
+//     let utc_offset = Number(offset)/60;
+//     utc_offset = 0;
+//     let sign = utc_offset < 0 ? "-" : "+"; 
+//     let abs_utc_offset = utc_offset; 
+//     if (abs_utc_offset < 0) {
+//         abs_utc_offset *= -1 ;
+//     } 
+//     abs_utc_offset -= 2;
+//     let new_utc_offset = abs_utc_offset < 10 ? "0" : "";
+
+//     let substr = " GMT" + sign + new_utc_offset + abs_utc_offset +"00";
+//     let substr2 = " GMT-0600"
+//     my_full_date += substr2;
+//     console.log(my_full_date);
+//     // let my_full_date2 = new Date(my_full_date);
+//     let final = new Date(my_full_date);
+//     return final;
+// }
+
+function calcTime(city) {
+
+// create Date object for current location
+var d = new Date();
+let offset = d.getTimezoneOffset();
+offset = Number(offset)/60;
+
+// offset = -1;
+// convert to msec
+// add local time zone offset
+// get UTC time in msec
+var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+// create new Date object for different city
+// using supplied offset
+var nd = new Date(utc + (3600000*offset));
+
+// return time as a string
+return "The local time in " + city + " is " + nd.toLocaleString();
+}
+// console.log(calcTime('qwe'));
+// console.log(getAdjustedDateAndTime())
+
+</script>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<script>
+// let single = 'single-quoted';
+// let double = "double-quoted";
+
+// let backticks = `backticks`;
+// alert(backticks.length);
+
+// console.log(backticks['2']);
+// console.log(backticks.charAt(2));
+
+// let str = `Hello`;
+// // получаем первый символ
+// alert( str[0] ); // H
+// alert( str.charAt(0) ); // H
+
+// // получаем последний символ
+// alert( str[str.length - 1] ); // o
+// //length — это свойство
+
+// for (let char of "Hello") {
+//   alert(char); // H,e,l,l,o (char — сначала "H", потом "e", потом "l" и т. д.)
+// }
+
+// alert( 'Interface'.toUpperCase() ); // INTERFACE
+// alert( 'Interface'.toLowerCase() ); // interface
+// alert( 'Interface'[0].toLowerCase() ); // 'i'
+
+
+// Поиск подстоки
+/*
+let str = 'Widget with id';
+
+alert( str.indexOf('Widget') ); // 0, потому что подстрока 'Widget' найдена в начале
+alert( str.indexOf('widget') ); // -1, совпадений нет, поиск чувствителен к регистру
+
+alert( str.indexOf("id") ); // 1, подстрока "id" найдена на позиции 1 (..idget with id)
+
+let str = 'Widget with id';
+
+alert( str.indexOf('id', 2) ) // 12
+
+*/
+// str.lastIndexOf(substr, position) - ищет с конца
+/*
+let str = "Widget with id";
+
+if (str.indexOf("Widget")) {
+    alert("Совпадение есть"); // не работает
+}
+
+let str = "Widget with id";
+
+if (str.indexOf("Widget") != -1) {
+    alert("Совпадение есть"); // теперь работает
+}
+*/
+
+/*
+alert( ~2 ); // -3, то же, что -(2+1)
+alert( ~1 ); // -2, то же, что -(1+1)
+alert( ~0 ); // -1, то же, что -(0+1)
+alert( ~-1 ); // 0, то же, что -(-1+1)
+
+let str = "Widget";
+
+if (~str.indexOf("Widget")) {
+  alert( 'Совпадение есть' ); // работает
+}
+ */
+
+/*
+// ПОЛУЧЕНИЕ ПОДСТРОКИ
+alert( "Midget".includes("id") ); // true
+alert( "Midget".includes("id", 3) ); // false, поиск начат с позиции 3
+
+alert( "Widget".startsWith("Wid") ); // true, "Wid" — начало "Widget"
+alert( "Widget".endsWith("get") ); // true, "get" — окончание "Widget"
+
+
+let str = "stringify";
+alert( str.slice(2) ); // ringify, с позиции 2 и до конца
+
+
+// начинаем с позиции 4 справа, а заканчиваем на позиции 1 справа
+alert( str.slice(-4, -1) ); // gif
+
+
+// для substring эти два примера — одинаковы
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"
+
+// …но не для slice:
+alert( str.slice(2, 6) ); // "ring" (то же самое)
+alert( str.slice(6, 2) ); // "" (пустая строка)
+
+
+// для substring эти два примера — одинаковы
+alert( str.substring(2, 6) ); // "ring"
+alert( str.substring(6, 2) ); // "ring"
+
+// …но не для slice:
+alert( str.slice(2, 6) ); // "ring" (то же самое)
+alert( str.slice(6, 2) ); // "" (пустая строка)
+
+
+// ring, получаем 4 символа, начиная с позиции 2
+alert( str.substr(2, 4) );
+
+// gi, получаем 2 символа, начиная с позиции 4 с конца строки
+alert( str.substr(-4, 2) );
+*/
+
+/*
+// Сравнение строк
+alert( "z".codePointAt(0) ); // 122
+alert( "Z".codePointAt(0) ); // 90
+
+
+let str = '';
+
+for (let i = 65; i <= 220; i++) {
+  str += String.fromCodePoint(i);
+}
+alert( str );
+// ABCDEFGHIJKLMNOPQRSTUVWXYZ[\]^_`abcdefghijklmnopqrstuvwxyz{|}~
+// ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜ
+*/
+
+
+//TASKS
+//1
+
+// let ucFirst = (num) => {
+//     return num[0].toUpperCase() + num.slice(1);
+// }
+// alert(ucFirst('today is very nice weather'));
+
+
+//2
+/*
+let checkSpam = (str)=>{
+    let string = "";
+    for (let s of str) {
+        string += s.toLowerCase();
+    }
+    if (string.includes('viagra') || string.indexOf('xxx')) {
+        return true;
+    }
+    return false;
+}
+
+alert(checkSpam('buy ViAgRA now') == true);
+alert(checkSpam('free xxxxx') == true);
+alert(checkSpam("innocent rabbit") == false); */
+
+//3
+/*
+function truncate(str,maxl) {
+    if(str.length > maxl) {
+        // let offset = str.length - maxl;
+        // let result = str.substring(str.length, str.length-offset);
+        let cut = str.substring(0,maxl-1);
+        return cut + "..." + " = true";
+    }
+    return str + " = false";
+}
+alert(truncate("Вот, что мне хотелось бы сказать на эту тему:", 20))
+
+alert( truncate("Всем привет!", 20) );
+*/
+
+//4
+function extractCurrencyValue(str) {
+    let result = "";
+    for (let s of str) {
+        result += isFinite(s) ? s : '0';
+    }
+    return +result;
+}
+alert( extractCurrencyValue('$120') === 120 );
+</script>
+</body>
+</html>

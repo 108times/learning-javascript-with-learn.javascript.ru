@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+
+</body>
+<script>
+    function User(name) {
+        this.name = name;
+        this.isAdmin = false;
+    }
+    let user = new User("Amir");
+
+    function testUser(name) {
+        this.name = name;
+
+        return {'1':'1'};
+    }
+    let test = new testUser('Jhonathatn');
+    alert(test);
+</script>
+<!-- <script src="main.js"></script> -->
+</html>

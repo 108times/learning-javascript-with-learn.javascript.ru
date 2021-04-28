@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let ms = 1e-6;
+        let a = 0xff; // шестнадцатеричная форма записи числа 255 // 0x
+        let b = 0b11111111; // бинарная форма записи числа 255 // 0b
+        let c = 0o377; // восьмеричная форма записи числа 255 // 0o
+
+    //    alert(a.toString(8));
+
+    //    alert( 123456..toString(36) ); // 2n9c
+
+        /*
+        Math.floor
+    Округление в меньшую сторону: 3.1 становится 3, а -1.1 — -2.
+
+        Math.ceil
+    Округление в большую сторону: 3.1 становится 4, а -1.1 — -1.
+
+        Math.round
+    Округление до ближайшего целого: 3.1 становится 3, 3.6 — 4, а -1.1 — -1.
+
+        Math.trunc (не поддерживается в Internet Explorer)
+    Производит удаление дробной части без округления: 3.1 становится 3, а -1.1 — -1.
+
+        */
+
+        let num = 1.23456;
+        console.log( Math.floor(num * 100) / 100 ); // 1.23456 -> 123.456 -> 123 -> 1.23
+
+        console.log( num.toFixed(1) );
+
+        // console.log( isNaN(NaN) ); // true
+        // console.log( isNaN("str") ); // true
+
+        // console.log( NaN === NaN );
+        // console.log( isFinite("15") ); // true
+        // console.log( isFinite("str") ); // false, потому что специальное значение: NaN
+        // console.log( isFinite(Infinity) ); // false, потому что специальное значение: Infinity
+
+        console.log('Parsing');
+        console.log( parseInt('100px') ); // 100
+        console.log( parseFloat('12.5em') ); // 12.5
+
+        console.log( parseInt('12.3') ); // 12, вернётся только целая часть
+        console.log( parseFloat('12.3.4') ); // 12.3, произойдёт остановка чтения на второй точке
+
+        console.log( parseInt('a123') ); // NaN, на первом символе происходит остановка чтения
+
+        console.log( Math.random() ); // 0.5435252343232
+
+        ///////////   Tasks   //////////////
+
+        ////////////    1    //////////////
+        let readNumber = () => {
+            if ( !prompt('Вводите числа','10') ) {
+                readNumber();
+            } else {
+                return null
+            }
+        }
+        ///////////////////////////////////
+
+        ///////////////////////////////////
+    </script>
+</body>
+</html>

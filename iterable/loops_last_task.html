@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background: #f1f1f1;">
+    <div class="" id="text" >
+
+    </div>
+    <script>
+        const text = document.getElementById("text")
+        function output(message) {
+          text.innerHTML += `<p style="background:#fff;padding:1rem;margin:1rem; border:1px solid #ddd; border-radius:.32rem; text-align:center">${message}</p>`
+        }
+
+        let n =100 ;
+        fizzBuzz2(n)
+
+        // outer:for(let i=1; i<=n;i++) {
+
+        //     let isSimpleNumber = true;
+
+        //     inner:for(j=2;j<i;j++) {
+
+        //        // console.log(` i=${i}, j=${j}, ${i}%${j}=${i%j}`)
+        //         if ( i%j == 0 ){
+        //             // continue outer;
+        //             isSimpleNumber = false;
+        //             break inner;
+        //         }
+
+        //     }
+
+        //     if (isSimpleNumber)
+        //     output(` ${i} is simple number!`)
+        // }
+
+function fizzBuzz(n) {
+    for (let i=0; i<n; i++) {
+    ((n % 3 == 0) && (n % 5 >0)) ? console.log(`${i} -> Fizz`) :
+    ((n % 3 > 0) && (n % 5 === 0)) ? console.log(`${i} -> Buzz`) :
+    ((n % 3 === 0) && (n % 5 === 0)) ? console.log(`${i} -> FizzBuzz`): console.log(`${i} is none of above`) ;
+    }
+}
+
+function fizzBuzz2(n) {
+
+    for (let i = 0; i<n; i++) {
+
+        let $word ;
+
+        if ((n%3 == 0) && (n%5 == 0)) {
+            $word = "Fizz Buzz"
+        } else if ((n%3 == 0) && (n%5 != 0)) {
+            $word = "Fizz"
+        } else if ((n%3 != 0) && (n%5 == 0)) {
+            $word = "Buzz"
+        } else {
+            $word = "just a number";
+        }
+
+        output(`${i} is ${$word}`)
+    }
+
+}
+
+    </script>
+</body>
+</html>

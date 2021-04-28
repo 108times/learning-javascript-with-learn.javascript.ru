@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+
+</body>
+<script>
+    // function User(name) {
+    //     this.name = name;
+    //     this.isAdmin = false;
+    // }
+    // let user = new User("Amir");
+
+    // function testUser(name) {
+    //     this.name = name;
+    //     return {name : 10};
+    // }
+    // let test = new testUser('Jhonathatn');
+
+    function User(name)
+    {
+        this.name = name;
+
+        this.sayHi = function() {
+            alert("Меня зовут " + this.name);
+        }
+    }
+
+    let user  =  new User('Amir').sayHi();
+
+
+/* TASKS  */
+
+function A() {
+    return {true:true}
+}
+function B(){
+    return {true:true}
+}
+
+let a = new A();
+let b = new B(a);
+
+alert(a == b);
+
+</script>
+<!-- <script src="main.js"></script> -->
+</html>

@@ -1,0 +1,57 @@
+:root {
+    --primary: rgb(199, 219, 255);
+    --secondary: rgb(170, 200, 255);
+    --accent: rgb(151, 187, 255);
+    --sh-1: 0px 5px 6px 0px rgba(0,0,0,.36);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.body {
+    background-color: var(--primary);
+    font-family: monospace;
+    width:100vw;
+    height:100vh;
+}
+/* header  */
+.header {
+    width: 100%;
+    height: 70px;
+    background-color: var(--accent);
+    box-shadow: var(--sh-1);
+
+    display: flex;
+}
+.header__left {
+    height: 100%;
+    width: 30%;
+    display: block;
+}
+.header__right {
+    width: 70%;
+    height: 100%;
+}
+.header__menu {
+    display: flex;
+    width: 100%;
+}
+/* main */
+.main-heading {
+    margin:20px 50px;
+    padding: 25px;
+    background-color: var(--secondary);
+    width: auto;
+}
+.section {
+    margin:20px 50px;
+    padding: 25px;
+    background-color: var(--secondary);
+}
+.main-heading__h1 {
+    margin: 10px;
+    margin-left: 0;
+    text-decoration: underline;
+}

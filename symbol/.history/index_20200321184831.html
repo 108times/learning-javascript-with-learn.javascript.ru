@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Symbol</title>
+</head>
+<body>
+
+</body>
+<script>
+"use strict";
+let id = Symbol('id');
+
+alert(id.toString());
+alert(" " + id.description);
+
+let user = {
+    name : "Amir",
+    'id' : id,
+}
+
+for (let key in user) alert(key);
+</script>
+</html>

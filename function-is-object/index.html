@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+
+    function ask(question, ...handlers) {
+        const isYes = confirm(question)
+        for (let handler of handlers) {
+            handler.length == 0
+                ? isYes
+                    ? handler() : null
+                : handler(isYes)
+        }
+    }
+
+    // ask("Вопрос?", () => alert("Вы ответили да!"),
+    //     result => alert(result), result => console.log(result)
+    // )
+
+    function makeCounter() {
+        const counter = function() {
+            return counter.count++
+        }
+        counter.count = 0
+        return counter
+    }
+    const counter = makeCounter()
+    // alert(`${ "" + counter() + counter() + counter() + counter()}`)
+
+    const string = "abcndnr"
+    // alert(string.split(""))
+
+    const sayHi = function func(word) {
+        if (word) {
+            alert(`Hello ${word}`)
+        } else {
+            func("Guest")
+        }
+    }
+    // sayHi('A')
+
+
+
+    function makeCounter() {
+        const counter = () => {
+            return counter.count++
+        }
+        counter.count = 0;
+        counter.set = newCount => counter.count = newCount
+        counter.decrease = () => counter.count--
+        return counter
+    }
+
+    const myCounter = makeCounter()
+    myCounter()
+    myCounter.set(10)
+    myCounter.decrease()
+    myCounter()
+    myCounter()
+    console.log(myCounter.count)
+
+
+
+    const sum = function func(a) {
+       let sum = a
+       function f(b) {
+           sum +=b
+           return f
+       }
+       f[Symbol.toPrimitive] = (hint) => sum
+
+       return f
+    }
+    function log (val) {
+        return console.log(String(val))
+    }
+    log(sum(1)(2))
+    log(sum(1)(2)(3))
+    log(sum(5)(-1)(2))
+    log(sum(6)(-1)(-2)(-3))
+    log(Number(sum(0)(1)(2)(3)(4)(5)))
+</script>
+</body>
+</html>

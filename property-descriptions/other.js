@@ -107,9 +107,11 @@ const objectCopy2 = Object.defineProperties({}, Object.getOwnPropertyDescriptors
 
 const objectCopy3 = {}
 for (let prop in object) { objectCopy3[prop] = object[prop] }
+
 console.group('Objects')
 console.log('object  ->  (original) ', getObjDescriptor( object) )
 console.log('objectCopy  ->  (Object.assing) ', getObjDescriptor( objectCopy) )
 console.log('objectCopy2  ->  (Object.defineProperties) ', getObjDescriptor( objectCopy2) )
 console.log('objectCopy3  ->  (for in loop) ', getObjDescriptor( objectCopy3) )
-console.groupEnd()
+console.log(object === objectCopy3)
+console.groupEnd('Objects')

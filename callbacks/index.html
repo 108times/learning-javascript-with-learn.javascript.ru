@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            flex-direction: column;
+        }
+        #circles {
+            height: 800px;
+            width: 800px;
+            border: 2px solid darkviolet;
+            border-radius: 2rem;
+            position: relative;
+        }
+        .circle {
+            transition-duration: 2s;
+            position: relative;
+            transform: translatez(0);
+            background-color: orange;
+            border-radius: 50%;
+            transition-duration: 2s;
+            transition-timing-function: ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 0%;
+            height: 0%;
+            opacity: 0;
+        }
+
+        .show {
+            animation: show;
+            animation-duration: 2s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;
+        }
+        @keyframes show {
+            from {
+
+            }
+            to {
+                width: 100%;
+                height: 100%;
+                opacity: 1;
+            }
+        }
+
+        #button {
+            padding: .7rem 3rem;
+            border-radius: 7px;
+            background: dodgerblue;
+            color: white;
+            cursor: pointer;
+            width: auto;
+            border:none;
+            font-size: 1.3rem;
+        }
+    </style>
+    <div id="circles"></div>
+    <button id="button">
+        showCircle(300, 300, 200)
+    </button>
+<script src="task.js"></script>
+</body>
+</html>

@@ -69,6 +69,7 @@ function catchFormatErrorsInUser(user) {
 
 function readUser(json) {
     let user
+
     try {
        user = JSON.parse(json)
     } catch(e) {

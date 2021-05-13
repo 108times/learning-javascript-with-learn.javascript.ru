@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .message-ball {
+            font-size: 20px;
+            line-height: 200px;
+            text-align: center;
+        }
+        .circle {
+            transition-property: width, height,margin-left,margin-top;
+            transition-duration: 2s;
+            position: fixed;
+            transform: translateX(-50%) translateY(-50%);
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+<button onclick="go()">Нажми меня</button>
+
+<script>
+
+    function getRandomColor() {
+        const colors = ['green','blue','dodgerblue','red','yellow','black','darkblue', 'violet']
+        return colors[ Math.trunc((Math.random() * Date.now()) % colors.length - 1) ]
+    }
+
+    function showCircle(cx,cy,radius) {
+        const circle = document.createElement('div')
+        circle.style.width = 0 + 'px'
+        circle.style.height = 0 + 'px'
+        circle.style.left = cx + 'px'
+        circle.style.top = cy + 'px'
+        circle.style.background = getRandomColor()
+        circle.className = 'circle'
+        document.body.append(circle)
+
+        return new Promise( resolve => {
+            setTimeout(() => {
+                circle.style.width = radius * 2 + 'px'
+                circle.style.height = radius * 2 + 'px'
+                circle.addEventListener('transitionend', function handler() {
+                    circle.removeEventListener('transitionend', handler)
+                    resolve(circle)
+                })
+            })
+        })
+
+    }
+
+
+    function go() {
+        showCircle(150,150,100).then( circle => {
+            circle.classList.add('message-ball')
+            circle.append('Hello, world!')
+        })
+    }
+</script>
+</body>
+</html>

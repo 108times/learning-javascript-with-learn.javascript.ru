@@ -1,0 +1,1 @@
+function one () {console.log('External script other1 loaded!')}

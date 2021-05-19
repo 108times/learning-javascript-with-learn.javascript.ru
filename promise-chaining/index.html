@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+        <style>
+            .wrapper {
+                width: 600px;
+                height: 700px;
+                margin: 100px auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+            }
+            .content {
+                margin: 100px;
+                background-color: rgba(0,0,0,.05);
+                height: 400px;
+                width: 100%;
+                border-radius: .5rem;
+                padding: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                position: relative;
+            }
+            .content img {
+                max-width: 100%;
+                max-height: 100%;
+                height: auto;
+                width: auto;
+                border-radius: .5rem;
+                object-fit: cover;
+            }
+
+            .btn {
+                position: relative;
+                overflow: hidden;
+                transition:400ms;
+                transition-property: top ,background, box-shadow ;
+                color:#4c2085;
+                border:2px solid #4c2085;
+                background-color: #4c208510;
+                padding: 1rem 2rem;
+                font-family: 'Apercu Pro', sans-serif;
+                font-size: 1.5rem;
+                outline: 0;
+                border-radius: .2rem;
+                box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03),
+                 0 4px 4px 0rem #4c208541;;
+                cursor: pointer;
+                width: auto;
+                max-width: 12rem;
+                text-align: center;
+                top: 0;
+            }
+            .btn:hover {
+                top:-2px;
+                background-color: #4c208521;
+                box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03),
+                0 8px 12px 0rem #51248d93;
+            }
+            .btn span.ripple {
+                position: absolute;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 800ms linear;
+                background-color: #4c208575;
+            }
+            .btn.clicked {
+                 box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03),
+                 0 3px 4px 0rem #51248d46;
+                transition:top 120ms;
+                top: 0;
+            }
+
+
+            .button {
+                color: #002f5c;
+                background-color: #bbd8ff;
+                box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03);
+                border: 0;
+                top: 0;
+            }
+            .button:hover {
+                top:0;
+                background-color: #97c1f9;
+                box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03)
+            }
+            .buttton span.ripple {
+                top: 0;
+                position: absolute;
+                border-radius: 50%;
+                transform: scale(0);
+                animation: ripple 800ms linear;
+                background-color: rgba(62, 132, 227, 0.9);
+            }
+            .buttton.clicked {
+                box-shadow: 0 0 0.5rem 0.5rem rgba(0,0,0,0.03);
+                transition:top 120ms;
+                top: 0;
+            }
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity:0
+                }
+            }
+
+            .loader {
+                position: absolute;
+                z-index: 100;
+                width: 300px;
+                height: 300px;
+                background: #fff;
+                box-shadow: 0 0 4rem 2rem rgba(0,0,0,.08);
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                visibility: hidden;
+            }
+            .loader-spinner {
+                position: relative;
+                width: 70%;
+                border-radius: 50%;
+                height: 70%;
+                border: 2px solid red;
+                animation: spin 2s cubic-bezier(0.455, 0.03, 0.515, 0.955)  infinite forwards;
+            }
+            .spinner-angle {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 50%;
+                width: 50%;
+                /* background-color: #fff; */
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 80px 80px 0 80px;
+                border-color: #fff transparent transparent transparent;
+            }
+            .spinner-angle::after {
+                content: '';
+                position: absolute;
+                top:-100px;
+                width: 100px;
+                left: -50px;
+                height: 50px;
+                background-color: #fff;
+            }
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .message {
+                padding: 1rem 2rem;
+                border-radius: .05rem;
+                background: #ecffea;
+                color: #0d280f;
+                font-size: 1.5rem;
+                font-family: 'Apercu Pro', sans-serif;
+                position: fixed;
+                opacity: 0;
+                top: -16rem;
+                transition:all 300ms linear;
+                height: 0px;
+                z-index: 100;
+                box-shadow: 0 1rem 1.5rem .2rem rgba(0,0,0,0.12);
+            }
+
+            .message.active {
+                height: 3rem;
+                top: 2rem;
+                overflow: hidden;
+                opacity: 1;
+                display: block;
+                white-space: nowrap;
+                text-overflow:  ellipsis;
+            }
+            .message::before {
+                content: '';
+                position: absolute;
+                height: 100%;
+                left: 0;
+                top: 0;
+                width: 5px;
+                background: #206220;
+                display: block;
+            }
+
+            .message.fade {
+                transition: 1000ms linear opacity;
+                opacity: 0;
+            }
+
+            .messages {
+                display: flex;
+                justify-content: center;
+            }
+
+            .content {
+                overflow: scroll;
+            }
+        </style>
+        <div class="inputs">
+            <input type="text" id="name">
+        </div>
+        <div class="wrapper">
+            <div class="messages"></div>
+            <div class="content">
+                <div class="loader" id="spinner">
+                    <div class="loader-spinner">
+                        <div class="spinner-angle"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="button" class="btn button" onclick="javascript: getGithubAvatarImage()">
+                <span class="btn-text">Load Image</span>
+            </div>
+
+        </div>
+
+    </div>
+<script src="other.js"></script>
+<script src="btn.js"></script>
+</body>
+</html>

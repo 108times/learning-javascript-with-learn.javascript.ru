@@ -1,0 +1,1 @@
+const three = () => console.log('External script other3 loaded!')

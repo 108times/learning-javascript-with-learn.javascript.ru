@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<style>
+    body {
+        background: #1a1a21;
+        color: aliceblue;
+    }
+    #root{
+        max-width: 600px;
+        padding: 2rem;
+        margin: 100px auto;
+        background: rgba(255,255,255,0.06);
+        position: relative;
+        border-radius: 0.25rem;
+    }
+    #root p {
+        position: relative;
+        padding: 1rem;
+        /*background: rgba(255,255,255,0.06);*/
+        border-radius: 0.55rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        transition: 300ms ease-out;
+        box-shadow: 0 0 0 .02rem rgba(255,255,255,.3);
+    }
+     #root p:hover {
+         box-shadow: 0 0 0 0.1rem rgba(255,255,255,.3);
+     }
+     #root p:hover::before {
+
+        /* box-shadow: 0 0 0 0.1rem rgba(255,255,255,.3); */
+     }
+    #root p::after, #root p::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,255,255,0.04);
+        transition:500ms ;
+        border-radius: .25rem;
+    }
+    #root p::before {
+        transition-delay: 100ms;
+        transition-duration: 600ms;
+        top: 0;
+        width: 100%;
+        z-index: -1;
+        /* height: 0; */
+    }
+
+    #root p.animate-before::before{
+        top: 80%;
+        width: 50%;
+    }
+
+    #root p.appear::after {
+        height: 0%;
+    }
+    #root p.appear::before {
+        top: 20%;
+        left: 20%;
+        width: 60%;
+        height: 60%;
+    }
+    @keyframes appear {
+        from {
+            width: 0;
+            height: 0;
+        }
+
+        to {
+            width: 100%;
+            height: 100%;
+        }
+    }
+</style>
+<div id="root"></div>
+<script type="module" src="tasks.js"></script>
+</body>
+</html>
